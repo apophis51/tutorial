@@ -1,0 +1,23 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import BlogPost from '../components/BlogPost.astro';
+
+import Header from '../components/Header.astro';
+const allPosts = await Astro.glob('../pages/posts/*.md');
+
+
+const pageTitle = "My Astro Learning Blog";
+---
+<body>
+    <Header />
+  
+    <h1>{pageTitle}</h1>
+    <p>This is where I will post about my journey learning Astro.</p>
+    <ul>
+        {allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
+
+      </ul>
+      <Footer />
+  </body>

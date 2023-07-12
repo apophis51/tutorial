@@ -1,0 +1,14 @@
+---
+import marked from "marked"
+
+const response = await fetch("http://localhost:1337/api/programming-blogs/");
+const data = await response.json();
+
+---
+<!-- Data fetched at build can be rendered in HTML -->
+<h1>User</h1>
+<div>
+{data.data.map((items) => (<div>{marked.parse(items.attributes.Content)}</div>))}
+</div>
+<!-- Data fetched at build can be passed to components as props -->
+
